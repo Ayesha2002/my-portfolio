@@ -135,76 +135,84 @@ export default function Portfolio() {
       </div>
 
       {/* Navbar */}
-      <nav
-        className={`fixed top-0 w-full z-50 backdrop-blur-md ${navBg} border-b ${navBorder}`}
+      {/* Navbar */}
+<nav
+  className={`fixed top-0 w-full z-50 backdrop-blur-md ${navBg} border-b ${navBorder}`}
+>
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+    <a
+      href="#hero"
+      className="font-bold text-xl bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 bg-clip-text text-transparent hover:opacity-80"
+    >
+      Ayesha Khan
+    </a>
+
+    {/* Desktop Nav */}
+    <div className="hidden md:flex items-center gap-6">
+      {["About", "Projects", "Experience", "Skills", "Contact"].map((item) => (
+        <a
+          key={item}
+          href={`#${item.toLowerCase()}`}
+          className="text-sm hover:text-pink-500 transition-colors relative group"
+        >
+          {item}
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all" />
+        </a>
+      ))}
+
+      {/* 🌞 Desktop Toggle */}
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className={`p-2 rounded-full ${
+          darkMode
+            ? "bg-slate-800 hover:bg-slate-700 text-yellow-400"
+            : "bg-slate-200 hover:bg-slate-300 text-slate-700"
+        } transition-all duration-300 hover:scale-110`}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-          <a
-            href="#hero"
-            className="font-bold text-xl bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 bg-clip-text text-transparent hover:opacity-80"
-          >
-            Ayesha Khan
-          </a>
+        {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      </button>
+    </div>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6">
-            {["About", "Projects", "Experience", "Skills", "Contact"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-sm hover:text-pink-500 transition-colors relative group"
-                >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all" />
-                </a>
-              )
-            )}
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`p-2 rounded-full ${
-                darkMode
-                  ? "bg-slate-800 hover:bg-slate-700"
-                  : "bg-slate-200 hover:bg-slate-300"
-              } transition-all duration-300 hover:scale-110`}
-            >
-              {darkMode ? (
-                <Sun className="w-5 h-5 text-yellow-400" />
-              ) : (
-                <Moon className="w-5 h-5 text-slate-700" />
-              )}
-            </button>
-          </div>
+    {/* 🍔 Mobile Menu Button */}
+    <button
+      className="md:hidden p-2 rounded-lg border border-slate-500"
+      onClick={() => setMenuOpen(!menuOpen)}
+    >
+      {menuOpen ? <X /> : <Menu />}
+    </button>
+  </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-lg border border-slate-500"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {menuOpen ? <X /> : <Menu />}
-          </button>
-        </div>
+  {/* 📱 Mobile Dropdown Menu */}
+  {menuOpen && (
+    <div
+      className={`md:hidden flex flex-col items-center py-4 gap-4 ${navBg} border-t ${navBorder}`}
+    >
+      {["About", "Projects", "Experience", "Skills", "Contact"].map((item) => (
+        <a
+          key={item}
+          href={`#${item.toLowerCase()}`}
+          onClick={() => setMenuOpen(false)}
+          className="text-sm hover:text-pink-500"
+        >
+          {item}
+        </a>
+      ))}
 
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div
-            className={`md:hidden flex flex-col items-center py-4 gap-4 ${navBg} border-t ${navBorder}`}
-          >
-            {["About", "Projects", "Experience", "Skills", "Contact"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-sm hover:text-pink-500"
-                >
-                  {item}
-                </a>
-              )
-            )}
-          </div>
-        )}
-      </nav>
+      {/* 🌙 Mobile Dark/Light Mode Toggle */}
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className={`p-2 mt-3 rounded-full ${
+          darkMode
+            ? "bg-slate-800 hover:bg-slate-700 text-yellow-400"
+            : "bg-slate-200 hover:bg-slate-300 text-slate-700"
+        } transition-all duration-300 hover:scale-110`}
+      >
+        {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      </button>
+    </div>
+  )}
+</nav>
+
 
       {/* Hero */}
       <section
