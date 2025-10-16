@@ -246,28 +246,29 @@ export default function Portfolio() {
             {currentRole}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <a
-              href="#projects"
-              className="group px-8 py-4 bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 rounded-full font-semibold text-white flex items-center gap-2 hover:shadow-lg hover:shadow-pink-500/40 transition-all"
-            >
-              View My Work
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-6">
+  <a
+    href="#projects"
+    className="group px-5 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 rounded-full font-medium text-sm sm:text-base text-white flex items-center gap-2 hover:shadow-md hover:shadow-pink-500/30 hover:scale-105 transition-all duration-300"
+  >
+    View My Work
+    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+  </a>
 
-            <a
-              href="/ayesha_resume_intern.pdf"
-              download="ayesha_resume_intern.pdf"
-              className={`px-8 py-4 border-2 ${
-                darkMode
-                  ? "border-slate-700 hover:border-pink-500 hover:bg-slate-800/50"
-                  : "border-slate-300 hover:border-pink-500 hover:bg-white"
-              } rounded-full font-semibold transition-all`}
-            >
-              Download Resume
-              <Download className="w-4 h-4 inline ml-2" />
-            </a>
-          </div>
+  <a
+    href="/ayesha_resume_intern.pdf"
+    download="ayesha_resume_intern.pdf"
+    className={`px-5 py-2.5 sm:px-6 sm:py-3 border text-sm sm:text-base font-medium rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 ${
+      darkMode
+        ? "border-slate-700 hover:border-pink-500 hover:bg-slate-800/40 text-white"
+        : "border-slate-300 hover:border-pink-500 hover:bg-white text-slate-800"
+    }`}
+  >
+    Download Resume
+    <Download className="w-4 h-4" />
+  </a>
+</div>
+
         </div>
       </section>
 
