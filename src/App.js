@@ -167,7 +167,6 @@ export default function Portfolio() {
                   ? "bg-slate-800 hover:bg-slate-700"
                   : "bg-slate-200 hover:bg-slate-300"
               } transition-all duration-300 hover:scale-110`}
-              aria-label="Toggle theme"
             >
               {darkMode ? (
                 <Sun className="w-5 h-5 text-yellow-400" />
@@ -196,24 +195,18 @@ export default function Portfolio() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-sm hover:text-pink-500"
                   onClick={() => setMenuOpen(false)}
+                  className="text-sm hover:text-pink-500"
                 >
                   {item}
                 </a>
               )
             )}
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2 mt-2 rounded-full bg-slate-700 text-yellow-300"
-            >
-              {darkMode ? <Sun /> : <Moon />}
-            </button>
           </div>
         )}
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section
         id="hero"
         className="relative min-h-screen flex items-center justify-center px-4 sm:px-6"
@@ -248,7 +241,7 @@ export default function Portfolio() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
             <a
               href="#projects"
-              className="group px-8 py-4 bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 rounded-full font-semibold hover:shadow-lg hover:shadow-pink-500/40 transition-all duration-300 flex items-center gap-2 text-white"
+              className="group px-8 py-4 bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 rounded-full font-semibold text-white flex items-center gap-2 hover:shadow-lg hover:shadow-pink-500/40 transition-all"
             >
               View My Work
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -261,7 +254,7 @@ export default function Portfolio() {
                 darkMode
                   ? "border-slate-700 hover:border-pink-500 hover:bg-slate-800/50"
                   : "border-slate-300 hover:border-pink-500 hover:bg-white"
-              } rounded-full font-semibold transition-all duration-300`}
+              } rounded-full font-semibold transition-all`}
             >
               Download Resume
               <Download className="w-4 h-4 inline ml-2" />
@@ -270,45 +263,114 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Projects */}
-      <section id="projects" className="py-24 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 bg-clip-text text-transparent">
-            Featured Projects
+      {/* About */}
+      <section id="about" className="py-24 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 bg-clip-text text-transparent">
+            About Me
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {projects.map((p, i) => (
+          <div
+            className={`space-y-6 text-lg leading-relaxed ${
+              darkMode ? "text-slate-300" : "text-slate-700"
+            }`}
+          >
+            <p>
+              A passionate full-stack developer who loves solving real-world
+              problems and creating meaningful digital experiences. I focus on
+              building efficient, scalable, and elegant web applications that
+              combine clean design with robust backend logic.
+            </p>
+            <p>
+              Skilled in technologies like{" "}
+              <span className="text-pink-400 font-medium">React.js</span>,{" "}
+              <span className="text-pink-400 font-medium">Node.js</span>,{" "}
+              <span className="text-pink-400 font-medium">Python</span>, and{" "}
+              <span className="text-pink-400 font-medium">Laravel</span>, I
+              enjoy turning ideas into polished products that offer a seamless
+              user experience.
+            </p>
+            <p>
+              I approach development with{" "}
+              <span className="text-orange-400 font-medium">clarity</span>,{" "}
+              <span className="text-pink-400 font-medium">curiosity</span>, and{" "}
+              <span className="text-rose-400 font-medium">
+                continuous learning
+              </span>
+              . Beyond coding, I explore design and problem-solving techniques
+              that inspire innovation in my work.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section id="experience" className="py-24 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 bg-clip-text text-transparent">
+            Experience
+          </h2>
+          <div className="relative border-l border-pink-500/30 ml-2 sm:ml-4">
+            {experience.map((exp, i) => (
               <div
                 key={i}
-                className={`${cardBg} border ${borderColor} rounded-2xl p-6 hover:scale-105 transition-all hover:border-pink-500/60`}
+                className="mb-12 ml-6 group relative transition-all hover:translate-x-1"
               >
-                <h3 className="text-2xl font-bold mb-2 text-pink-400">
-                  {p.title}
-                </h3>
-                <p className="mb-3 text-sm sm:text-base text-slate-400">
-                  {p.desc}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4 justify-center sm:justify-start">
-                  {p.tech.map((t, j) => (
-                    <span
-                      key={j}
-                      className="px-3 py-1 text-xs border border-slate-700/40 rounded-full"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-pink-400 hover:gap-3 transition-all"
+                <div className="absolute -left-3 sm:-left-3 top-2 w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-gradient-to-r from-orange-400 to-pink-500" />
+                <div
+                  className={`${cardBg} border ${borderColor} p-6 rounded-2xl hover:border-pink-500/60 transition-all`}
                 >
-                  View Project <ExternalLink className="w-4 h-4" />
-                </a>
+                  <h3 className="text-2xl font-semibold bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 bg-clip-text text-transparent">
+                    {exp.organization}
+                  </h3>
+                  <p className="italic text-slate-400 text-sm mb-2">
+                    {exp.role}
+                  </p>
+                  <p className="text-sm text-slate-500 mb-3">{exp.period}</p>
+                  <p className="text-slate-300">{exp.description}</p>
+                </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="py-24 px-4 sm:px-6 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 bg-clip-text text-transparent">
+          Featured Projects
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {projects.map((p, i) => (
+            <div
+              key={i}
+              className={`${cardBg} border ${borderColor} rounded-2xl p-6 hover:scale-105 transition-all hover:border-pink-500/60`}
+            >
+              <h3 className="text-2xl font-bold mb-2 text-pink-400">
+                {p.title}
+              </h3>
+              <p className="mb-3 text-sm sm:text-base text-slate-400">
+                {p.desc}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4 justify-center sm:justify-start">
+                {p.tech.map((t, j) => (
+                  <span
+                    key={j}
+                    className="px-3 py-1 text-xs border border-slate-700/40 rounded-full"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-pink-400 hover:gap-3 transition-all"
+              >
+                View Project <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -330,6 +392,50 @@ export default function Portfolio() {
               {s}
             </span>
           ))}
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-24 px-4 sm:px-6 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-orange-400 via-pink-500 to-rose-500 bg-clip-text text-transparent">
+          Let's Connect
+        </h2>
+        <p className="max-w-2xl mx-auto text-lg text-slate-400 mb-10">
+          Have a project in mind or just want to say hi? Reach out — I’d love to
+          chat!
+        </p>
+        <a
+          href="mailto:ayesha200210@gmail.com"
+          className="inline-flex items-center gap-3 px-10 py-4 sm:px-12 sm:py-5 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full font-semibold text-lg text-white hover:shadow-lg hover:shadow-pink-500/40 transition-all"
+        >
+          <Mail className="w-5 h-5" /> Send me an email
+        </a>
+
+        <div className="flex gap-6 justify-center pt-10">
+          <a
+            href="https://linkedin.com/in/khanayesha10"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-full border border-slate-700/50 hover:border-pink-500 hover:scale-110 transition-all"
+          >
+            <Linkedin className="w-5 h-5" />
+          </a>
+          <a
+            href="https://github.com/Ayesha2002"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-full border border-slate-700/50 hover:border-pink-500 hover:scale-110 transition-all"
+          >
+            <Github className="w-5 h-5" />
+          </a>
+          <a
+            href="https://x.com/ashibillu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-full border border-slate-700/50 hover:border-pink-500 hover:scale-110 transition-all"
+          >
+            <Twitter className="w-5 h-5" />
+          </a>
         </div>
       </section>
 
