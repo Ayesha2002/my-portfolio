@@ -256,8 +256,8 @@ export default function Portfolio() {
             </a>
 
             <a
-              href="/Ayesha_Resume.pdf"
-              download="Ayesha_Resume.pdf"
+              href="/ayesha_resume_intern.pdf"
+              download="ayesha_resume_intern.pdf"
               className={`px-8 py-4 border-2 ${
                 darkMode
                   ? "border-slate-700 hover:border-pink-500 hover:bg-slate-800/50"
